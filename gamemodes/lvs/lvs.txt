@@ -5,7 +5,7 @@
 	"maps"		"^lvs"
 	"category"	"pvp"
 	"menusystem"	"1"
-	"workshopid"	"2912816023"
+	"workshopid"	"3317866011"
 	"settings"
 	{
 		1
