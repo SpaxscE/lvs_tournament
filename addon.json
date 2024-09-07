@@ -1,0 +1,10 @@
+{
+	"title"		: "[LVS] - Tournament",
+	"type"		: "gamemode",
+	"tags"		: [ "fun", "cartoon" ],
+	"ignore"	: [
+		"*.psd",
+		"*.vcproj",
+		"*.svn*"
+	]
+}
