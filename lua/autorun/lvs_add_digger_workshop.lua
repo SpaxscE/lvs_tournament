@@ -1,8 +1,17 @@
+
+sound.Add( {
+	name = "LVS.ION_CANNON_FIRE",
+	channel = CHAN_STATIC,
+	volume = 1,
+	level = 120,
+	pitch = {98, 102},
+	sound = {
+		"^lvs/tournament/weapons/laserrifle/ion_cannon_shot1.wav",
+		"^lvs/tournament/weapons/laserrifle/ion_cannon_shot2.wav",
+		"^lvs/tournament/weapons/laserrifle/ion_cannon_shot3.wav",
+	}
+} )
+
 if CLIENT then return end
 
--- digger tanks
-resource.AddWorkshop( "3258126576" )
-resource.AddWorkshop( "3269194997" )
-
--- misc pack
-resource.AddWorkshop( "3232905426" )
+resource.AddWorkshop( "3317866011" )
