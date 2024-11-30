@@ -92,6 +92,7 @@ end
 
 local BlockedClasses = {
 	["func_lod"] = true,
+	["player"] = true,
 }
 
 function meta:CreateSpawnPoint()
