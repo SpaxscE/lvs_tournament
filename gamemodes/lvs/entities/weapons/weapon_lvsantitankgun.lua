@@ -115,11 +115,7 @@ function SWEP:PrimaryAttack()
 	if not IsValid( ply ) then return end
 
 	if IsFirstTimePredicted() then
-		if CLIENT and ply == LocalPlayer() then
-			self:EmitSound("weapons/357/357_fire"..math.random(2,3)..".wav",75,75,1)
-		else
-			self:EmitSound("^weapons/smg1/npc_smg1_fire1.wav",90, 55, 1, CHAN_STATIC )
-		end
+		self:EmitSound("^lvs/tournament/weapons/antitankgun/shot.wav",90,math.random(98,102),1)
 
 		ply:ViewPunch( Angle(-math.Rand(3,5),-math.Rand(3,5),0) )
 
@@ -140,20 +136,20 @@ function SWEP:PrimaryAttack()
 
 	bullet.Dir = (ply:GetEyeTrace().HitPos - bullet.Src):GetNormalized()
 
-	bullet.Spread 	= Vector(0.1,0.1,0.1) * self:GetBulletSpreadMultiplicator()
+	bullet.Spread = Vector(0.1,0.1,0.1) * self:GetBulletSpreadMultiplicator()
 
 	bullet.TracerName = "lvs_tracer_antitankgun"
-	bullet.Force	= 4000
-	bullet.Force1km	= 0
+	bullet.Force	= 10000
+	bullet.Force1km	= 4000
+	bullet.EnableBallistics = true
 	bullet.HullSize 	= 2
-	bullet.Damage	= 100
-
-	bullet.Velocity = 8000
+	bullet.Damage	= 200
+	bullet.Velocity = 6000
 	bullet.Entity = self
 	bullet.Attacker 	= ply
 	bullet.Callback = function(att, tr, dmginfo)
 		if tr.Entity:IsPlayer() then
-			dmginfo:ScaleDamage( 2 )
+			dmginfo:ScaleDamage( 4 )
 		end
 
 		dmginfo:SetDamageType( DMG_SNIPER + DMG_ALWAYSGIB )
