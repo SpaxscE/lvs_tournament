@@ -49,6 +49,8 @@ function EFFECT:DoImpactEffect( EndPos, Dir )
 		filter = {self.Player,self.Ent,self}
 	} )
 
+	if not trace then return end
+
 	local ply = LocalPlayer()
 
 	if trace.Hit and trace.HitWorld then

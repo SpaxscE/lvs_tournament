@@ -34,8 +34,6 @@ function EFFECT:Init( data )
 		NextPlay = T + 0.05
 	end
 
-	local emitter = ParticleEmitter( Pos, false )
-
 	local trace = util.TraceLine( {
 		start = Pos + Dir * 5,
 		endpos = Pos - Dir * 5,
@@ -44,6 +42,10 @@ function EFFECT:Init( data )
 			return true
 		end
 	} )
+
+	if not trace then return end
+
+	local emitter = ParticleEmitter( Pos, false )
 
 	if trace.Hit and not trace.HitNonWorld then
 		util.DecalEx( DecalMat, trace.Entity, trace.HitPos + trace.HitNormal, trace.HitNormal, color_white, 0.2, 0.2 )

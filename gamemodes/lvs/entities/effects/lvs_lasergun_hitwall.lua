@@ -49,8 +49,6 @@ function EFFECT:Init( data )
 	local Col = self.Col
 	local Pos = self.Pos
 	local Dir = data:GetNormal()
-	
-	local emitter = ParticleEmitter( Pos, false )
 
 	local trace = util.TraceLine( {
 		start = Pos + Dir * 5,
@@ -60,6 +58,10 @@ function EFFECT:Init( data )
 			return true
 		end
 	} )
+
+	if not trace then return end
+
+	local emitter = ParticleEmitter( Pos, false )
 
 	if trace.Hit and not trace.HitNonWorld then
 		self.RenderGlow = {
