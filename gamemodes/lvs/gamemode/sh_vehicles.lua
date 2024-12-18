@@ -8,6 +8,8 @@ list.Set( "VehiclePrices", "lvs_wheeldrive_dodhalftrack_us", 275 )
 list.Set( "VehiclePrices", "lvs_plane_p51", 545 )
 list.Set( "VehiclePrices", "lvs_plane_p47", 425 )
 
+list.Set( "VehiclePrices", "lvs_wheeldrive_stug", 300 )
+
 
 local meta = FindMetaTable( "Player" )
 
