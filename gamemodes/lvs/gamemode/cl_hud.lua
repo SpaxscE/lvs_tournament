@@ -207,12 +207,32 @@ local hud = {
 	["CHudHealth"] = true,
 	["CHudBattery"] = true,
 	["CHudAmmo"] = true,
-	["CHudSecondaryAmmo"] = true
+	["CHudSecondaryAmmo"] = true,
+}
+
+local hudammo = {
+	["CHudAmmo"] = true,
+	["CHudSecondaryAmmo"] = true,
 }
 
 function GM:HUDShouldDraw( name )
+	if hud[name] then
+		if hudammo[name] then
+			local ply = LocalPlayer()
 
-	if hud[name] then return false end
+			if not IsValid( ply ) then return end
+
+			local swep = ply:GetActiveWeapon()
+
+			if IsValid( swep ) then
+				if swep.DrawAmmoInfo then return false end
+			else
+				return false
+			end
+		else
+			return false
+		end
+	end
 
 	return self.BaseClass.HUDShouldDraw(self, name)
 end
