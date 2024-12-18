@@ -16,7 +16,8 @@ if SERVER then
 	function ENT:SetAttacker( ent ) self._attacker = ent end
 
 	function ENT:GetAttacker() return self._attacker or NULL end
-	function ENT:GetDamage() return (self._dmg or 1500) end
+	function ENT:GetDamage() return (self._dmg or 2000) end
+	function ENT:GetForce() return (self._force or 8000) end
 	function ENT:GetRadius() return (self._radius or 150) end
 
 	function ENT:GetCreatedBy()
@@ -85,29 +86,19 @@ if SERVER then
 
 		local effectdata = EffectData()
 		effectdata:SetOrigin( Pos )
+		effectdata:SetNormal( Vector(0,0,1) )
 
 		if self:WaterLevel() >= 2 then
 			util.Effect( "WaterSurfaceExplosion", effectdata, true, true )
 		else
-			util.Effect( "lvs_fortification_explosion_mine", effectdata )
+			util.Effect( "lvs_defence_explosion", effectdata )
 		end
 
-		self:SetNoDraw( true )
+		local attacker = self:GetAttacker()
 
-		timer.Simple( 0.1, function()
-			if not IsValid( self ) then return end
+		LVS:BlastDamage( Pos, Vector(0,0,1), IsValid( attacker ) and attacker or game.GetWorld(), self, self:GetDamage(), DMG_BLAST, self:GetRadius(), self:GetForce() )
 
-			local dmginfo = DamageInfo()
-			dmginfo:SetDamage( self:GetDamage() )
-			dmginfo:SetAttacker( IsValid( self:GetAttacker() ) and self:GetAttacker() or self )
-			dmginfo:SetDamageType( DMG_BLAST )
-			dmginfo:SetInflictor( self )
-			dmginfo:SetDamagePosition( Pos )
-
-			util.BlastDamageInfo( dmginfo, Pos, self:GetRadius() )
-
-			self:Remove()
-		end )
+		SafeRemoveEntityDelayed( self, FrameTime() )
 	end
 
 	function ENT:Think()
