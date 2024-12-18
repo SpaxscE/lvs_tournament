@@ -115,7 +115,7 @@ function SWEP:PrimaryAttack()
 	if not IsValid( ply ) then return end
 
 	if IsFirstTimePredicted() then
-		self:EmitSound("^lvs/tournament/weapons/antitankgun/shot.wav",90,math.random(98,102),1)
+		self:EmitSound("lvs/tournament/weapons/antitankgun/shot.wav",90,math.random(98,102),1)
 
 		ply:ViewPunch( Angle(-math.Rand(3,5),-math.Rand(3,5),0) )
 
@@ -140,7 +140,7 @@ function SWEP:PrimaryAttack()
 
 	bullet.TracerName = "lvs_tracer_antitankgun"
 	bullet.Force	= 10000
-	bullet.Force1km	= 4000
+	bullet.Force1km	= 2000
 	bullet.EnableBallistics = true
 	bullet.HullSize 	= 2
 	bullet.Damage	= 200
