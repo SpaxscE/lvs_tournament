@@ -140,7 +140,7 @@ if SERVER then
 			return
 		end
 
-		if not HitEnt:IsPlayer() and PhysObj:GetStress() > 10 and HitEnt:GetClass() ~= self:GetClass() then
+		if not HitEnt:IsPlayer() and HitEnt:GetClass() ~= self:GetClass() then
 			self:Detonate( data.HitPos )
 		else
 			if data.Speed > 60 and data.DeltaTime > 0.1 then
