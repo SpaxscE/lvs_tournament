@@ -10,6 +10,8 @@ ENT.Category = "[LVS]"
 ENT.Spawnable       = false
 ENT.AdminSpawnable  = false
 
+ENT._lvsLaserGunDetectHit = true
+
 if SERVER then
 	function ENT:SetDamage( num ) self._dmg = num end
 	function ENT:SetRadius( num ) self._radius = num end
