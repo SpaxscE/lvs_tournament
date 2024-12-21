@@ -98,6 +98,14 @@ if SERVER then
 	end
 
 	function ENT:Think()
+		local PhysObj = self:GetPhysicsObject()
+
+		if IsValid( PhysObj ) and PhysObj:IsMotionEnabled() then
+			if PhysObj:IsAsleep() then
+				PhysObj:EnableMotion( false )
+			end
+		end
+
 		if self.ShouldDetonate then
 			self:Detonate()
 		end
@@ -160,8 +168,32 @@ if SERVER then
 		self:Detonate()
 	end
 else
-	function ENT:Draw()
-		self:DrawModel()
+	function ENT:Draw( flags )
+		local ply = LocalPlayer()
+
+		if IsValid( ply ) then
+			if not ply:InVehicle() then
+				self:DrawModel( flags )
+
+				return
+			end
+
+			local ViewEnt = ply:GetViewEntity()
+
+			if IsValid( ViewEnt ) then
+				ply = ViewEnt
+			end
+		else
+			return
+		end
+
+		local OldPos = self:GetPos()
+
+		local Dist = math.min( (ply:GetPos() - self:GetPos()):LengthSqr() / 50000, 4.5 )
+
+		self:SetPos( self:LocalToWorld( Vector(0,0,-Dist) ) )
+		self:DrawModel( flags )
+		self:SetPos( OldPos )
 	end
 
 	function ENT:Think()
