@@ -34,7 +34,7 @@ if SERVER then
 		end
 
 		physobj:SetAngleVelocityInstantaneous( vector_origin )
-		physobj:SetVelocityInstantaneous( data.OurNewVelocity:GetNormalized() * 1000 )
+		physobj:SetVelocityInstantaneous( data.OurNewVelocity:GetNormalized() * math.random(700,1400) + VectorRand() * 250 )
 	end
 
 	function ENT:OnTakeDamage( dmginfo )
