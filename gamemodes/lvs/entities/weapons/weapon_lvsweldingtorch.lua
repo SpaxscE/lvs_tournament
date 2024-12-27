@@ -26,7 +26,7 @@ function SWEP:GetLVS()
 
 	if not IsValid( ent ) then return NULL end
 
-	if ent.LVS or ent.IsFortification or ent._lvsPlayerSpawnPoint then return ent end
+	if ent._lvsRepairToolLabel or ent.LVS or ent.IsFortification or ent._lvsPlayerSpawnPoint then return ent end
 
 	if not ent.GetBase then return NULL end
 
