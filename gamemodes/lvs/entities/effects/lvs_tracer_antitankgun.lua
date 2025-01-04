@@ -120,6 +120,7 @@ function EFFECT:Think()
 		effectdata:SetStart( self.Dir )
 		effectdata:SetEntity( trace.Entity )
 		effectdata:SetNormal( trace.HitNormal )
+		effectdata:SetMagnitude( 0.5 )
 		effectdata:SetSurfaceProp( trace.SurfaceProps )
 		util.Effect( "lvs_bullet_impact_ap", effectdata )
 
