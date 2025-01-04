@@ -49,8 +49,11 @@ if CLIENT then
 
 		local vm = ply:GetViewModel()
 		local bm = vm:GetBoneMatrix( 1 )
-		local pos =  bm:GetTranslation()
-		local ang =  bm:GetAngles()	
+
+		if not bm then return end
+
+		local pos = bm:GetTranslation()
+		local ang = bm:GetAngles()	
 
 		pos = pos + ang:Up() * 25
 		pos = pos + ang:Right() * 1
