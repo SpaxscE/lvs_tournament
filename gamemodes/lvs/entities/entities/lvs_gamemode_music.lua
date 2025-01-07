@@ -120,6 +120,42 @@ else
 		},
 	})
 
+	list.Set( "lvsDynamicSongs", "Song3", {
+		segments = 5,
+		duration = 246,
+		stages = 5,
+		songs = {
+			warmup = {
+				[1] = {"voices"},
+				[2] = {"karamba"},
+			},
+			lowaction = {
+				[1] = {"bass"},
+				[2] = {"bass","drum1"},
+				[3] = {"bass","drum1","guitar1"},
+				[4] = {"bass","drum2","guitar1"},
+				[5] = {"bass","drum1","drum2","guitar1"},
+			},
+			highaction = {
+				[1] = {"bass"},
+				[2] = {"bass","drum2"},
+				[3] = {"bass","drum1","guitar2"},
+				[4] = {"bass","drum2","guitar2"},
+				[5] = {"bass","drum1","drum2","guitar2"},
+			},
+		},
+		instruments = {
+			bass = "lvs/tournament/music/song3/bass.ogg",
+			drum1 = "lvs/tournament/music/song3/drum1.ogg",
+			drum2 = "lvs/tournament/music/song3/drum2.ogg",
+			guitar1 = "lvs/tournament/music/song3/guitar1.ogg",
+			guitar2 = "lvs/tournament/music/song3/guitar2.ogg",
+			synth = "lvs/tournament/music/song3/synth.ogg",
+			karamba = "lvs/tournament/music/song3/karamba.ogg",
+			voices = "lvs/tournament/music/song3/voices.ogg",
+		},
+	})
+
 	function ENT:Initialize()
 		local _, SongName = table.Random( list.Get( "lvsDynamicSongs" ) )
 
