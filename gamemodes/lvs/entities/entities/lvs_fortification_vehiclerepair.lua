@@ -38,7 +38,7 @@ if SERVER then
 			entity:EmitSound("items/ammo_pickup.wav")
 		end
 
-		entity:OnMaintenance()
+		entity:OnMaintenance(self)
 	end
 
 	function ENT:StartTouch( entity )
