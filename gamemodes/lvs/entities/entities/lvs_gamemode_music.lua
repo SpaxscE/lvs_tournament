@@ -36,6 +36,8 @@ if SERVER then
 	end
 
 else
+	ENT.DefaultSong = "Song1"
+
 	list.Set( "lvsDynamicSongs", "Song1", {
 		segments = 5,
 		duration = 213,
@@ -157,9 +159,15 @@ else
 	})
 
 	function ENT:Initialize()
-		local _, SongName = table.Random( list.Get( "lvsDynamicSongs" ) )
+		if math.random(1,6) == 1 then
+			local _, SongName = table.Random( list.Get( "lvsDynamicSongs" ) )
 
-		self:SetSong( SongName )
+			self:SetSong( SongName )
+
+			return
+		end
+
+		self:SetSong( self.DefaultSong )
 	end
 
 	function ENT:SetSong( newsong )
@@ -167,7 +175,7 @@ else
 	end
 
 	function ENT:GetSong()
-		return self._curSongName or "Song1"
+		return self._curSongName or self.DefaultSong
 	end
 
 	local cVarVolume = CreateClientConVar( "lvs_volume_music", 0.1, true, false)

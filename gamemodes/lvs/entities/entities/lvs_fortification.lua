@@ -96,6 +96,8 @@ if SERVER then
 			end
 		end
 
+		if not IsValid( attacker ) then return end
+
 		local dmginfo = DamageInfo()
 		dmginfo:SetDamage( damage )
 		dmginfo:SetAttacker( attacker )

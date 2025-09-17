@@ -72,7 +72,9 @@ if CLIENT then
 			else
 				oldwep = wep
 
-				input.SelectWeapon( deswep )
+				if IsValid( deswep ) then
+					input.SelectWeapon( deswep )
+				end
 			end
 
 			return true
